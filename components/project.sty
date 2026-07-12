@@ -1,0 +1,75 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{components/project}[2026/07/12 ResumeKit Projects]
+
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx}
+
+\def\RK@ProjectTitle{}
+\def\RK@ProjectStack{}
+\def\RK@ProjectLinks{}
+\def\RK@ProjectBullets{}
+
+\newenvironment{ResumeProject}
+{
+    \RKClear{\RK@ProjectTitle}
+    \RKClear{\RK@ProjectStack}
+    \RKClear{\RK@ProjectLinks}
+    \RKClear{\RK@ProjectBullets}
+}
+{
+    \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+        \RKTitle{\RK@ProjectTitle} &
+        \RK@ProjectLinks
+    \end{tabular*}
+
+    \RKSmallSpace
+
+    \RKSubtitle{\RK@ProjectStack}
+
+    \RKSmallSpace
+
+    \RKRenderList{\RK@ProjectBullets}
+
+    \RKSpace
+}
+
+\newcommand{\ResumeProjectTitle}[1]{%
+    \gdef\RK@ProjectTitle{#1}%
+}
+
+\newcommand{\ResumeProjectStack}[1]{%
+    \gdef\RK@ProjectStack{#1}%
+}
+
+\newcommand{\ResumeProjectLink}[2]{%
+    \ifcsempty{RK@ProjectLinks}
+    {
+        \gdef\RK@ProjectLinks{\RKLink{#2}{#1}}
+    }
+    {
+        \gappto\RK@ProjectLinks{%
+            \RKSeparator
+            \RKLink{#2}{#1}
+        }
+    }
+}
+
+\newcommand{\ResumeProjectBullet}[1]{%
+    \gappto\RK@ProjectBullets{%
+        \item #1
+    }
+}
+
+% User-facing Project environment
+\newenvironment{Project}{%
+    \begin{ResumeProject}%
+    \let\Title\ResumeProjectTitle
+    \let\Stack\ResumeProjectStack
+    \let\Bullet\ResumeProjectBullet
+    \newcommand{\Github}[1]{\ResumeProjectLink{GitHub}{##1}}%
+    \newcommand{\Live}[1]{\ResumeProjectLink{Live}{##1}}%
+}{%
+    \end{ResumeProject}%
+}
+
+\endinput

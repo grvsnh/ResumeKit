@@ -1,0 +1,76 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{components/utils}[2026/07/12 ResumeKit Utilities]
+
+\RequirePackage{etoolbox}
+\RequirePackage{hyperref}
+\RequirePackage{enumitem}
+
+% Default visual style hooks (can be overridden by themes)
+\newcommand{\ResumeHeaderNameStyle}{\Huge\bfseries}
+\newcommand{\ResumeHeaderContactStyle}{\normalsize}
+\newcommand{\ResumeEntryTitleStyle}{\large\bfseries}
+\newcommand{\ResumeMetadataStyle}{\small}
+
+\newcommand{\RKSeparator}{%
+    \hspace{0.5em}$\cdot$\hspace{0.5em}%
+}
+
+\newcommand{\RKSpaceVal}{6pt}
+\newcommand{\RKSmallSpaceVal}{3pt}
+\newcommand{\RKItemSep}{3pt}
+
+\newcommand{\RKSpace}{%
+    \vspace{\RKSpaceVal}%
+}
+
+\newcommand{\RKSmallSpace}{%
+    \vspace{\RKSmallSpaceVal}%
+}
+
+\newcommand{\RKLink}[2]{%
+    \href{#1}{#2}%
+}
+
+\newcommand{\RKMail}[1]{%
+    \href{mailto:#1}{#1}%
+}
+
+\newcommand{\RKIfEmpty}[3]{%
+    \expandafter\ifstrempty\expandafter{#1}%
+    {#2}%
+    {#3}%
+}
+
+\newcommand{\RKRenderList}[1]{%
+    \begin{itemize}[leftmargin=1.5em, nosep, itemsep=\RKItemSep]
+        #1
+    \end{itemize}
+}
+
+\newcommand{\RKAppend}[2]{%
+    \gappto#1{#2}
+}
+
+\newcommand{\RKClear}[1]{%
+    \gdef#1{}%
+}
+
+\newcommand{\RKTitle}[1]{%
+    {\ResumeEntryTitleStyle #1}%
+}
+
+\newcommand{\RKSubtitle}[1]{%
+    {\ResumeMetadataStyle #1}%
+}
+
+\newcommand{\RKRight}[1]{%
+    \hfill #1%
+}
+
+\newcommand{\RKHorizontalRule}{%
+    \vspace{2pt}
+    \hrule
+    \vspace{6pt}
+}
+
+\endinput

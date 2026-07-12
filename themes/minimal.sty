@@ -1,0 +1,14 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{themes/minimal}[2026/07/12 ResumeKit Minimal Theme]
+\ifcsempty{RK@Font}{%
+    \setmainfont{Liberation Sans}%
+}{%
+    \setmainfont{\RK@Font}%
+}
+\renewcommand{\ResumeHeaderNameStyle}{\LARGE\bfseries}
+\renewcommand{\ResumeHeaderContactStyle}{\small}
+\renewcommand{\ResumeEntryTitleStyle}{\normalsize\bfseries}
+\renewcommand{\ResumeMetadataStyle}{\small}
+\titleformat{\section}{\large\bfseries}{}{0em}{}
+\titlespacing{\section}{0pt}{7pt}{3pt}
+\endinput

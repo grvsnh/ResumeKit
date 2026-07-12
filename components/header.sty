@@ -1,0 +1,25 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{components/header}[2026/07/12 ResumeKit Header]
+
+\newcommand{\ResumeHeader}{%
+    \begin{center}
+        {\ResumeHeaderNameStyle\RK@ProfileName}\par
+        \vspace{4pt}
+        {\ResumeHeaderContactStyle%
+            \RK@ProfileLocation
+            \ifcsempty{RK@ProfileEmail}{}{%
+                \ifcsempty{RK@ProfileLocation}{}{\RKSeparator}%
+                \href{mailto:\RK@ProfileEmail}{\RK@ProfileEmail}%
+            }%
+            \ifcsempty{RK@ProfilePhone}{}{%
+                \ifcsempty{RK@ProfileEmail}{\ifcsempty{RK@ProfileLocation}{}{\RKSeparator}}{\RKSeparator}%
+                \href{tel:\RK@ProfilePhone}{\RK@ProfilePhone}%
+            }%
+        }\par
+        \vspace{3pt}
+        {\ResumeHeaderContactStyle\RK@ProfileLinks}%
+    \end{center}%
+    \vspace{-6pt}%
+}
+
+\endinput

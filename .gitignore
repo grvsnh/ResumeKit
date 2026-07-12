@@ -1,0 +1,13 @@
+# Auxiliary build directory
+/build/
+
+# Compiled root PDF
+/resume.pdf
+
+# TeX auxiliary files
+*.synctex.gz
+*.log
+*.aux
+*.fls
+*.out
+*.xdv

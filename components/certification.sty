@@ -1,0 +1,75 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{components/certification}[2026/07/12 ResumeKit Certification]
+
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx}
+
+\def\RK@CertificationTitle{}
+\def\RK@CertificationIssuer{}
+\def\RK@CertificationDate{}
+\def\RK@CertificationLinks{}
+
+\newenvironment{ResumeCertification}
+{
+    \RKClear{\RK@CertificationTitle}
+    \RKClear{\RK@CertificationIssuer}
+    \RKClear{\RK@CertificationDate}
+    \RKClear{\RK@CertificationLinks}
+}
+{
+    \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+        \RKTitle{\RK@CertificationTitle} &
+        \RK@CertificationDate
+    \end{tabular*}
+
+    \RKSmallSpace
+
+    \RKSubtitle{\RK@CertificationIssuer}
+
+    \RKIfEmpty{\RK@CertificationLinks}
+    {}
+    {
+        \RKSeparator
+        \RK@CertificationLinks
+    }
+
+    \RKSpace
+}
+
+\newcommand{\ResumeCertificationTitle}[1]{%
+    \gdef\RK@CertificationTitle{#1}%
+}
+
+\newcommand{\ResumeCertificationIssuer}[1]{%
+    \gdef\RK@CertificationIssuer{#1}%
+}
+
+\newcommand{\ResumeCertificationDate}[1]{%
+    \gdef\RK@CertificationDate{#1}%
+}
+
+\newcommand{\ResumeCertificationLink}[2]{%
+    \ifcsempty{RK@CertificationLinks}
+    {
+        \gdef\RK@CertificationLinks{\RKLink{#2}{#1}}
+    }
+    {
+        \gappto\RK@CertificationLinks{%
+            \RKSeparator
+            \RKLink{#2}{#1}
+        }
+    }
+}
+
+% User-facing Certification environment
+\newenvironment{Certification}{%
+    \begin{ResumeCertification}%
+    \let\CertificationTitle\ResumeCertificationTitle
+    \let\Issuer\ResumeCertificationIssuer
+    \let\CertificationDate\ResumeCertificationDate
+    \newcommand{\Credential}[1]{\ResumeCertificationLink{Credential}{##1}}%
+}{%
+    \end{ResumeCertification}%
+}
+
+\endinput
