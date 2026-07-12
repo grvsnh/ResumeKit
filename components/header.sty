@@ -6,18 +6,23 @@
         {\ResumeHeaderNameStyle\RK@ProfileName}\par
         \vspace{4pt}
         {\ResumeHeaderContactStyle%
-            \RK@ProfileLocation
+            \def\RK@HeaderSep{}%
+            \ifcsempty{RK@ProfileLocation}{}{%
+                \RK@ProfileLocation
+                \def\RK@HeaderSep{\RKSeparator}%
+            }%
             \ifcsempty{RK@ProfileEmail}{}{%
-                \ifcsempty{RK@ProfileLocation}{}{\RKSeparator}%
-                \href{mailto:\RK@ProfileEmail}{\RK@ProfileEmail}%
+                \RK@HeaderSep\href{mailto:\RK@ProfileEmail}{\RK@ProfileEmail}%
+                \def\RK@HeaderSep{\RKSeparator}%
             }%
             \ifcsempty{RK@ProfilePhone}{}{%
-                \ifcsempty{RK@ProfileEmail}{\ifcsempty{RK@ProfileLocation}{}{\RKSeparator}}{\RKSeparator}%
-                \href{tel:\RK@ProfilePhone}{\RK@ProfilePhone}%
+                \RK@HeaderSep\href{tel:\RK@ProfilePhone}{\RK@ProfilePhone}%
+                \def\RK@HeaderSep{\RKSeparator}%
             }%
-        }\par
-        \vspace{3pt}
-        {\ResumeHeaderContactStyle\RK@ProfileLinks}%
+            \ifcsempty{RK@ProfileLinks}{}{%
+                \RK@HeaderSep\RK@ProfileLinks
+            }%
+        }%
     \end{center}%
     \vspace{-6pt}%
 }

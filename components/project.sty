@@ -6,21 +6,23 @@
 
 \def\RK@ProjectTitle{}
 \def\RK@ProjectStack{}
-\def\RK@ProjectLinks{}
+\def\RK@ProjectUrl{}
 \def\RK@ProjectBullets{}
 
 \newenvironment{ResumeProject}
 {
     \RKClear{\RK@ProjectTitle}
     \RKClear{\RK@ProjectStack}
-    \RKClear{\RK@ProjectLinks}
+    \RKClear{\RK@ProjectUrl}
     \RKClear{\RK@ProjectBullets}
 }
 {
-    \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
-        \RKTitle{\RK@ProjectTitle} &
-        \RK@ProjectLinks
-    \end{tabular*}
+    \noindent
+    \ifcsempty{RK@ProjectUrl}{%
+        \RKTitle{\RK@ProjectTitle}%
+    }{%
+        \href{\RK@ProjectUrl}{\RKTitle{\RK@ProjectTitle}}%
+    }%
 
     \RKSmallSpace
 
@@ -41,19 +43,6 @@
     \gdef\RK@ProjectStack{#1}%
 }
 
-\newcommand{\ResumeProjectLink}[2]{%
-    \ifcsempty{RK@ProjectLinks}
-    {
-        \gdef\RK@ProjectLinks{\RKLink{#2}{#1}}
-    }
-    {
-        \gappto\RK@ProjectLinks{%
-            \RKSeparator
-            \RKLink{#2}{#1}
-        }
-    }
-}
-
 \newcommand{\ResumeProjectBullet}[1]{%
     \gappto\RK@ProjectBullets{%
         \item #1
@@ -66,8 +55,10 @@
     \let\Title\ResumeProjectTitle
     \let\Stack\ResumeProjectStack
     \let\Bullet\ResumeProjectBullet
-    \newcommand{\Github}[1]{\ResumeProjectLink{GitHub}{##1}}%
-    \newcommand{\Live}[1]{\ResumeProjectLink{Live}{##1}}%
+    \newcommand{\Github}[1]{\gdef\RK@ProjectUrl{##1}}%
+    \newcommand{\Live}[1]{\gdef\RK@ProjectUrl{##1}}%
+    \newcommand{\Paper}[1]{\gdef\RK@ProjectUrl{##1}}%
+    \newcommand{\Link}[1]{\gdef\RK@ProjectUrl{##1}}%
 }{%
     \end{ResumeProject}%
 }
