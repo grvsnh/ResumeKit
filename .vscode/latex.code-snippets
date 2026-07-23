@@ -1,0 +1,113 @@
+{
+	"Candidate Name": {
+		"prefix": "\\name",
+		"body": [
+			"\\name{${1:Candidate Name}}"
+		],
+		"description": "Set candidate full name"
+	},
+	"Candidate Tagline / Title": {
+		"prefix": "\\tagline",
+		"body": [
+			"\\tagline{${1:Software Engineer | Systems Architect}}"
+		],
+		"description": "Set candidate professional title or tagline"
+	},
+	"LinkedIn Profile": {
+		"prefix": "\\linkedin",
+		"body": [
+			"\\linkedin"
+		],
+		"description": "Fetch LinkedIn username from links/linkedin.tex"
+	},
+	"GitHub Profile": {
+		"prefix": "\\github",
+		"body": [
+			"\\github"
+		],
+		"description": "Fetch GitHub username from links/github.tex"
+	},
+	"Email Address": {
+		"prefix": "\\email",
+		"body": [
+			"\\email"
+		],
+		"description": "Fetch Email address from links/email.tex"
+	},
+	"Phone Number": {
+		"prefix": "\\phone",
+		"body": [
+			"\\phone"
+		],
+		"description": "Fetch Phone number from links/phone.tex"
+	},
+	"Website Portfolio": {
+		"prefix": "\\website",
+		"body": [
+			"\\website"
+		],
+		"description": "Fetch Portfolio URL from links/website.tex"
+	},
+	"Location": {
+		"prefix": "\\location",
+		"body": [
+			"\\location"
+		],
+		"description": "Fetch Location from links/location.tex"
+	},
+	"Render CV Header": {
+		"prefix": "\\makecvheader",
+		"body": [
+			"\\makecvheader"
+		],
+		"description": "Render candidate header"
+	},
+	"CV Section": {
+		"prefix": "\\cvsection",
+		"body": [
+			"\\begin{cvsection}{${1:Section Title}}",
+			"\t$0",
+			"\\end{cvsection}"
+		],
+		"description": "Create a CV section"
+	},
+	"CV Experience Entry": {
+		"prefix": "\\cventry",
+		"body": [
+			"\\begin{cventry}{${1:Role / Degree}}{${2:Company / Institution}}{${3:Location}}{${4:Date Range}}",
+			"\t\\item ${0:Achievement / Details}",
+			"\\end{cventry}"
+		],
+		"description": "Create an experience or education entry"
+	},
+	"CV Project Entry": {
+		"prefix": "\\cvproject",
+		"body": [
+			"\\begin{cvproject}{${1:Project Name | Technologies}}{${2:Date Range}}",
+			"\t\\item ${0:Project details}",
+			"\\end{cvproject}"
+		],
+		"description": "Create a project entry"
+	},
+	"CV Skill Line": {
+		"prefix": "\\cvskill",
+		"body": [
+			"\\cvskill{${1:Category}}{${2:Details / Technologies}}"
+		],
+		"description": "Add a skill line item"
+	},
+	"Show Section Rules": {
+		"prefix": "\\showrules",
+		"body": [
+			"\\showrules"
+		],
+		"description": "Enable horizontal line under section titles"
+	},
+	"Hide Section Rules": {
+		"prefix": "\\hiderules",
+		"body": [
+			"\\hiderules"
+		],
+		"description": "Disable horizontal line under section titles"
+	}
+}

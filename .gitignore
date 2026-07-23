@@ -1,13 +1,18 @@
-# Auxiliary build directory
+# TeX build output & auxiliary files
+*.pdf
 /build/
-
-# Compiled root PDF
-/resume.pdf
-
-# TeX auxiliary files
 *.synctex.gz
 *.log
 *.aux
 *.fls
 *.out
 *.xdv
+*.fdb_latexmk
+*.bbl
+*.blg
+*.toc
+*.png
+
+# OS & Editor files
+.DS_Store
+Thumbs.db

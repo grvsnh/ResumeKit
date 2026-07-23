@@ -1,17 +1,32 @@
 {
   "latex-workshop.latex.outDir": "%DIR%/build",
   "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.intellij.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
   "latex-workshop.latex.recipes": [
     {
-      "name": "latexmk (XeLaTeX)",
-      "tools": ["latexmk-xelatex"]
+      "name": "pdfLaTeX",
+      "tools": ["pdflatex"]
+    },
+    {
+      "name": "XeLaTeX",
+      "tools": ["xelatex"]
     }
   ],
   "latex-workshop.latex.tools": [
     {
-      "name": "latexmk-xelatex",
-      "command": "latexmk",
-      "args": ["-xelatex", "-outdir=build", "-synctex=1", "%DOC%"]
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": ["-interaction=nonstopmode", "-halt-on-error", "-outdir=%DIR%/build", "%DOC%"]
+    },
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": ["-interaction=nonstopmode", "-halt-on-error", "-outdir=%DIR%/build", "%DOC%"]
     }
   ]
 }

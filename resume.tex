@@ -1,0 +1,57 @@
+\documentclass{cv_template}
+
+% Candidate Profile & Tagline
+\name{Name}
+\tagline{Tagline / Professional Title}
+
+% Set-and-Forget Links: Automatically fetches from links/
+\email
+\linkedin
+\github
+\location
+
+\begin{document}
+\begin{fitpage}
+
+% Render Header
+\makecvheader
+
+% --- Executive Summary ---
+\begin{cvsection}{Summary}
+    \import{sections/summary/}{summary.tex}
+\end{cvsection}
+
+% --- Technical Skills ---
+\begin{cvsection}{Technical Skills}
+    \import{sections/skills/}{skills.tex}
+    \import{sections/skills/}{awards.tex}
+    \import{sections/skills/}{certifications.tex}
+    \import{sections/skills/}{achievements.tex}
+\end{cvsection}
+
+% --- Professional Experience ---
+\begin{cvsection}{Professional Experience}
+    \import{sections/experience/}{job1.tex}
+    \import{sections/experience/}{job2.tex}
+\end{cvsection}
+
+% --- Projects ---
+\begin{cvsection}{Projects}
+    \import{sections/projects/}{project1.tex}
+    \import{sections/projects/}{project2.tex}
+    \import{sections/projects/}{project3.tex}
+\end{cvsection}
+
+% --- Leadership & Activities ---
+\begin{cvsection}{Leadership \& Activities}
+    \import{sections/leadership/}{activity1.tex}
+    \import{sections/leadership/}{activity2.tex}
+\end{cvsection}
+
+% --- Education ---
+\begin{cvsection}{Education}
+    \import{sections/education/}{education.tex}
+\end{cvsection}
+
+\end{fitpage}
+\end{document}

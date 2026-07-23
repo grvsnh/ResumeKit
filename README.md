@@ -1,31 +1,94 @@
-# 🚀 ResumeKit
+# ResumeKit 🚀
 
-ResumeKit is a modular, component-based LaTeX framework for building ATS-friendly, single-page resumes. I made this for myself to easily create different resume variants tailored for different roles without duplicating content. 
+A modern, modular, ATS-optimized, **pure Black & White** LaTeX Resume Template system.
 
----
+Features direct candidate setup in `resume.tex`, an auto-fetching `links/` folder system, zero-bullet clean contact formatting, elegant section rules, and dynamic 1-page auto-scaling (`\begin{fitpage}...\end{fitpage}`).
 
-## 🎨 Themes & Roles
-
-| Python Developer Role | Minimal Theme | Modern Theme |
-| :---: | :---: | :---: |
-| [![Python Developer](assets/resume_python.png)](assets/resume_python.pdf) | [![Minimal Theme](assets/resume_minimal.png)](assets/resume_minimal.pdf) | [![Modern Theme](assets/resume_modern.png)](assets/resume_modern.pdf) |
-| [📥 Download PDF](assets/resume_python.pdf) | [📥 Download PDF](assets/resume_minimal.pdf) | [📥 Download PDF](assets/resume_modern.pdf) |
+![Resume Preview](assets/resume_preview.png)
 
 ---
 
-## 🛠️ How it Works
+## ⚡ Direct Setup in `resume.tex` & `links/` Folder
 
-1. **Configure Theme & Load Profile**: Everything is configured in **[main.tex](main.tex)**:
-   ```latex
-   \ResumeSetTheme{modern}      % modern, minimal, compact, academic
-   \ResumeSetFont{Noto Sans}    % Any system font
-   \ResumeSetDensity{compact}   % compact, comfortable, relaxed
-   \ResumeSetAccent{black}      % Accent color
-   \input{profiles/gaurav-singh.tex}
-   ```
-2. **Define Your Profile**: Make your own profile file inside the `profiles/` folder (e.g. `profiles/your-name.tex`).
-3. **Define Reusable Components**: 
-   * Add your projects as reusable tex files in `projects/`.
-   * Add your skills grouped by category in `skills/`.
-4. **Choose What to Include**: In `main.tex`, simply `\input` the specific projects and skills you want to show for a particular role, in any order you prefer.
-5. **Build**: Run `latexmk -xelatex main.tex` to compile.
+### 1. Candidate Info inside [`resume.tex`](file:///home/grvsnh/Work/ResumeKit/resume.tex):
+
+```latex
+\documentclass{cv_template}
+
+% Candidate Name & Tagline
+\name{Name}
+\tagline{Tagline / Professional Title}
+
+% Set-and-Forget Links: Automatically fetches from links/
+\email
+\linkedin
+\github
+\location
+```
+
+### 2. Auto-fetching `links/` System:
+
+Store your contact details/usernames inside individual files under `links/`:
+- `links/linkedin.tex` -> `username`
+- `links/github.tex` -> `username`
+- `links/email.tex` -> `email@example.com`
+- `links/website.tex` -> `website.com`
+- `links/phone.tex` -> `+1 (555) 000-0000`
+- `links/location.tex` -> `City, Country`
+
+Simply invoke the macros in [`resume.tex`](file:///home/grvsnh/Work/ResumeKit/resume.tex):
+
+```latex
+\email
+\linkedin
+\github
+\location
+```
+
+---
+
+## 📁 Directory Architecture
+
+```
+ResumeKit/
+├── resume.tex                   # Main document entry point
+├── cv_template.cls              # Black & White LaTeX class with fitpage auto-scaling
+├── README.md                    # Documentation & API reference
+├── assets/                      # Preview assets
+│   └── resume_preview.png       # Generated resume preview image
+├── links/                       # Organised Link & Contact Files
+│   ├── github.tex               # GitHub username
+│   ├── linkedin.tex             # LinkedIn username
+│   ├── email.tex                # Email address
+│   ├── website.tex              # Portfolio URL
+│   ├── phone.tex                # Phone number
+│   └── location.tex             # Candidate location
+└── sections/                    # Modular Content Components
+    ├── summary/                # Executive Summary paragraph
+    │   └── summary.tex
+    ├── skills/                 # Technical Skills, Awards, Certifications & Achievements
+    │   ├── skills.tex
+    │   ├── awards.tex
+    │   ├── certifications.tex
+    │   └── achievements.tex
+    ├── experience/             # Work experience entries
+    │   ├── job1.tex
+    │   └── job2.tex
+    ├── projects/               # Technical project entries
+    │   ├── project1.tex
+    │   ├── project2.tex
+    │   └── project3.tex
+    ├── leadership/              # Leadership & extracurriculars
+    │   ├── activity1.tex
+    │   └── activity2.tex
+    └── education/              # Academic & school entries
+        └── education.tex
+```
+
+---
+
+## 🛠️ Building
+
+```bash
+pdflatex -interaction=nonstopmode -halt-on-error resume.tex
+```
