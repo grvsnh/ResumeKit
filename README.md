@@ -2,9 +2,20 @@
 
 A modern, modular, ATS-optimized, **pure Black & White** LaTeX Resume Template system.
 
-Features direct candidate setup in `resume.tex`, an auto-fetching `links/` folder system, zero-bullet clean contact formatting, elegant section rules, and dynamic 1-page auto-scaling (`\begin{fitpage}...\end{fitpage}`).
+Features direct candidate setup in `resume.tex`, an auto-fetching `links/` folder system, zero-bullet clean contact formatting, elegant section rules, and strict 1-page layout guarantee.
 
 ![Resume Preview](assets/resume_preview.png)
+
+---
+
+## ☁️ Running in Overleaf (1-Click Setup)
+
+You can instantly import and compile this repository in **Overleaf**:
+
+1. **Download ZIP**: Click the green **Code** button above on GitHub and select **Download ZIP** (or download `ResumeKit.zip`).
+2. **Upload to Overleaf**: Open [Overleaf](https://www.overleaf.com), click **New Project** $\rightarrow$ **Upload Project**, and select the downloaded ZIP file.
+3. **Set Main Document**: Ensure `resume.tex` is selected as the main document.
+4. **Compile**: Click **Recompile** to render your ATS-friendly resume!
 
 ---
 
@@ -52,7 +63,7 @@ Simply invoke the macros in [`resume.tex`](file:///home/grvsnh/Work/ResumeKit/re
 ```
 ResumeKit/
 ├── resume.tex                   # Main document entry point
-├── cv_template.cls              # Black & White LaTeX class with fitpage auto-scaling
+├── cv_template.cls              # Black & White LaTeX class with optional fitpage scaling
 ├── README.md                    # Documentation & API reference
 ├── assets/                      # Preview assets
 │   └── resume_preview.png       # Generated resume preview image
@@ -87,7 +98,7 @@ ResumeKit/
 
 ---
 
-## 🛠️ Building
+## 🛠️ Building Locally
 
 ```bash
 pdflatex -interaction=nonstopmode -halt-on-error resume.tex
