@@ -11,7 +11,10 @@
 *.bbl
 *.blg
 *.toc
-*.png
+
+# Allow repository preview assets
+!assets/*.png
+!assets/*.jpg
 
 # OS & Editor files
 .DS_Store
